@@ -1,7 +1,7 @@
 import "./App.css";
-
+import Home from "./pages/Home";
 function App() {
-  return <div>Trash Rock Landing Page</div>;
+  return <Home />;
 }
 
 export default App;

@@ -3,9 +3,9 @@
 blues
 hsla(223, 79%, 68%, 1)
 hsla(223, 79%, 68%, 0.7)
+hsla(223, 40%, 32%, 1)
 hsla(223, 91%, 64%, 1)
 hsla(223, 90%, 64%, 1)
-hsla(223, 40%, 32%, 1)
 hsla(223, 52%, 27%, 1)
 hsla(223, 71%, 17%, 1) 
 
@@ -18,6 +18,28 @@ hsla(0, 0%, 100%, 1)
 */
 
 :root {
+  /* colors */
+  /* blues */
+  --blue-000: hsla(223, 100%, 90%, 1);
+  --blue-100: hsla(223, 91%, 64%, 1);
+  --blue-200: hsla(223, 90%, 64%, 1);
+  --blue-300: hsla(223, 79%, 68%, 1);
+  --blue-400: hsla(223, 79%, 68%, 0.7);
+  --blue-500: hsla(223, 40%, 32%, 1);
+  --blue-600: hsla(223, 52%, 27%, 1);
+  --blue-700: hsla(223, 71%, 17%, 1);
+
+  /* greys */
+  --grey-100: hsla(0, 0%, 100%, 1);
+  --grey-200: hsla(0, 0%, 81%, 1);
+  --grey-300: hsla(0, 0%, 71%, 1);
+  --grey-400: hsla(0, 0%, 61%, 1);
+  --grey-500: hsla(0, 0%, 51%, 1);
+  --grey-600: hsla(0, 0%, 41%, 1);
+  --grey-700: hsla(0, 0%, 31%, 1);
+  --grey-800: hsla(0, 0%, 21%, 1);
+  --grey-900: hsla(0, 0%, 11%, 1);
+
   /* spacing */
   --spacing-00: 0;
   --spacing-05: 0.125rem;
@@ -61,8 +83,12 @@ hsla(0, 0%, 100%, 1)
 *::after {
   box-sizing: border-box;
   border: none;
+  padding: 0;
+  margin: 0;
 }
 
 body {
   font-family: "Poppins", sans-serif;
+  color: black;
+  overflow-x: hidden;
 }
