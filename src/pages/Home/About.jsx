@@ -87,6 +87,7 @@ const Section = styled.section`
     gap: var(--spacing-80);
     h2 {
       margin-block-end: var(--spacing-30);
+      font-size: 3.5rem;
     }
 
     img {
@@ -147,6 +148,10 @@ const Button = styled.button`
   &:hover {
     cursor: pointer;
     background: hsla(43, 83%, 61%, 0.8);
+  }
+  @media (max-width: 46rem) {
+    font-size: 1.2rem;
+    padding: var(--spacing-40) var(--spacing-160);
   }
 `;
 export default About;

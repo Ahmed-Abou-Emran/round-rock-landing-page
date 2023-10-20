@@ -51,4 +51,9 @@ const LinesWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3.6rem;
+  width: 2rem;
+  @media (max-width: 25rem) {
+    gap: 1rem;
+    width: 1rem;
+  }
 `;
