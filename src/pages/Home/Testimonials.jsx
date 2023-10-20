@@ -118,7 +118,8 @@ const Pagination = styled.div`
 const Section = styled.section`
   /* padding-inline: 22rem; */
   /* gap: var(--spacing-120); */
-  padding-inline: clamp(0.5rem, 5vw + 1rem, 22rem);
+  /* padding-inline: clamp(0.5rem, 5vw + 1rem, 22rem); */
+  padding-inline: clamp(0.5rem, 18%, 22rem);
   margin-block: var(--spacing-200) var(--spacing-120);
   display: flex;
   flex-direction: column;

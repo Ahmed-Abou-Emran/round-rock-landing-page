@@ -6,7 +6,8 @@ import Line4 from "../assets/Line4.png";
 
 export const HeadingWithLines = ({ children, flexGap }) => {
   return (
-    <HeadingWrapper style={{ gap: flexGap ? flexGap : "0" }}>
+    // <HeadingWrapper style={{ gap: flexGap ? flexGap : "0" }}>
+    <HeadingWrapper>
       <LinesWrapper>
         <img src={Line2} />
         <img src={Line4} />
@@ -31,6 +32,10 @@ const HeadingWrapper = styled.div`
   width: max-content;
   margin-inline: auto;
   gap: ${(props) => props.flexGap};
+
+  @media (max-width: 25rem) {
+    padding: 0.5rem;
+  }
 `;
 
 const Heading2 = styled.div`

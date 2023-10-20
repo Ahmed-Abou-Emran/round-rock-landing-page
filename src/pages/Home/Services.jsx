@@ -10,7 +10,9 @@ function Services() {
       <HeadingWithLines>Services</HeadingWithLines>
       <ContentWrapper>
         <Card>
-          <img src={Service1} />
+          <div>
+            <img src={Service1} />
+          </div>
           <TextWrapper>
             <h3>Lorem Ipsum</h3>
             <p>
@@ -59,7 +61,8 @@ const Section = styled.section`
   align-items: center;
   gap: var(--spacing-120);
   gap: var(--spacing-120);
-  padding-inline: clamp(0.5rem, 5vw + 1rem, 22rem);
+  /* padding-inline: clamp(0.5rem, 5vw + 1rem, 22rem); */
+  padding-inline: clamp(0.5rem, 18%, 22rem);
 `;
 
 const ContentWrapper = styled.div`
@@ -67,6 +70,10 @@ const ContentWrapper = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   gap: var(--spacing-60);
   margin-inline: auto;
+
+  @media (max-width: 30rem) {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  }
 `;
 
 const Card = styled.div`
@@ -94,6 +101,7 @@ const Card = styled.div`
 const TextWrapper = styled.div`
   padding: var(--spacing-70);
 `;
+
 const Button = styled.button`
   border-radius: 71px;
   background: var(--blue-100);
@@ -101,11 +109,15 @@ const Button = styled.button`
   font-size: 1.5rem;
   font-weight: 700;
   padding: var(--spacing-60) var(--spacing-200);
-
+  margin-block-end: var(--spacing-80);
   transition: background-color 200ms ease-in;
   &:hover {
     cursor: pointer;
     background-color: var(--blue-300);
+  }
+  @media (max-width: 46rem) {
+    font-size: 1.2rem;
+    padding: var(--spacing-40) var(--spacing-160);
   }
 `;
 

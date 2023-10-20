@@ -60,7 +60,8 @@ const Section = styled.section`
   gap: var(--spacing-160);
   margin-block: var(--spacing-120) var(--spacing-160);
   padding-block: var(--spacing-240);
-  padding-inline: clamp(0.5rem, 5vw + 1rem, 22rem);
+  /* padding-inline: clamp(0.5rem, 5vw + 1rem, 22rem); */
+  padding-inline: clamp(0.5rem, 10%, 22rem);
   position: relative;
   z-index: 1;
 
@@ -81,7 +82,7 @@ const Section = styled.section`
     line-height: 1.3;
     max-width: 31rem;
   }
-  @media (max-width: 93rem) {
+  @media (max-width: 90rem) {
     height: revert;
     gap: var(--spacing-80);
     h2 {
