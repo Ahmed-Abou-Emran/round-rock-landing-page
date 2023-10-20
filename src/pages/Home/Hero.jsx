@@ -5,6 +5,9 @@ import logo from "../../assets/logo.png";
 function Hero() {
   return (
     <Header>
+      <ImageWrapper>
+        <img src={HeroImage} />
+      </ImageWrapper>
       <LogoWrapper>
         <img src={logo} />
         <LogoTextWrapper>
@@ -38,27 +41,49 @@ function Hero() {
 }
 
 const Header = styled.header`
-  /* height: 90vh; */
-  /* linear-gradient(
-      to right top,
-      hsla(203, 83%, 81%, 0.7),
-      hsla(43, 83%, 91%, 0.4)
-    ), */
-  padding-block: var(--spacing-200);
-  background-image: url("./src/assets/HeroStyled.png");
-  background-repeat: no-repeat;
-  background-position: contain;
-  background-size: auto;
+  padding-block-end: var(--spacing-200);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
+  position: relative;
   gap: var(--spacing-360);
+  width: 100%;
+  @media (max-width: 80rem) {
+    background-image: url("./src/assets/Hero.jpg");
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    background-position: top center;
+    gap: var(--spacing-240);
+    padding-inline: 1rem;
+  }
+`;
+
+const ImageWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  img {
+    flex-shrink: 0;
+    object-fit: cover;
+    object-position: center;
+
+    @media (max-width: 80rem) {
+      display: none;
+    }
+  }
 `;
 const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 20px;
+  margin-block-start: var(--spacing-200);
+  /* margin-inline: 0.5rem; */
+  @media (max-width: 46rem) {
+    flex-direction: column;
+    gap: 5px;
+  }
 `;
 
 const LogoTextWrapper = styled.div`
@@ -76,6 +101,14 @@ const LogoTextWrapper = styled.div`
     font-weight: 800;
     line-height: 1.2;
     letter-spacing: 16px;
+  }
+
+  @media (max-width: 46rem) {
+    font-size: 3rem;
+    span {
+      font-size: 1rem;
+      letter-spacing: 12px;
+    }
   }
 `;
 const ContentWrapper = styled.div`
@@ -95,6 +128,12 @@ const ContentWrapper = styled.div`
     margin-bottom: var(--spacing-50);
     max-width: 34rem;
   }
+
+  @media (max-width: 30rem) {
+    p {
+      font-size: 0.9rem;
+    }
+  }
 `;
 const TextWrapper = styled.div`
   display: flex;
@@ -110,6 +149,10 @@ const TextWrapper = styled.div`
   span {
     font-weight: 900;
   }
+
+  @media (max-width: 44rem) {
+    font-size: 3rem;
+  }
 `;
 
 const Button = styled.button`
@@ -119,11 +162,15 @@ const Button = styled.button`
   font-size: 1.5rem;
   font-weight: 700;
   padding: var(--spacing-60) var(--spacing-200);
-
+  margin-block-end: var(--spacing-80);
   transition: background-color 200ms ease-in;
   &:hover {
     cursor: pointer;
     background-color: var(--blue-300);
+  }
+  @media (max-width: 46rem) {
+    font-size: 1.2rem;
+    padding: var(--spacing-40) var(--spacing-160);
   }
 `;
 
