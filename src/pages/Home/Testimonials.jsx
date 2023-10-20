@@ -1,52 +1,129 @@
 import React from "react";
-import Testimonials1 from "../../assets/Testimonials1.png";
 import Star from "../../assets/star.svg";
+import RightArrow from "../../assets/rightArrow.svg";
+import LeftArrow from "../../assets/leftArrow.svg";
 import { HeadingWithLines } from "../../ui/Headings";
+import Loader from "../../ui/Loader";
 import styled from "styled-components";
-const BASE_URL = "https://reqres.in/api/users";
-
-async function getData() {
-  const response = await fetch(`${BASE_URL}?page=${1}`);
-  const json = await response.json();
-  return json;
-}
+import useFetch from "../../hooks/useFetch";
 
 function Testimonials() {
-  const testionials = [0, 1, 2, 3, 4, 5];
+  const [page, setPage] = React.useState(1);
+
+  const handlePagination = (dir, totalPages) => {
+    if ((dir === 1) & (page === totalPages)) return;
+    if ((dir === -1) & (page === 1)) return;
+
+    if (dir === 1) {
+      setPage((prevPage) => prevPage + 1);
+    } else {
+      setPage((prevPage) => prevPage - 1);
+    }
+  };
+
+  const {
+    loading,
+    error,
+    data: testimonials,
+  } = useFetch(`https://reqres.in/api/users?page=${page}`);
+
   const stars = [1, 2, 3, 4, 5];
   return (
     <Section>
       <HeadingWithLines>Testimonials</HeadingWithLines>
-      <TestimonialsWrapper>
-        {testionials.map((index) => (
-          <Card key={index}>
-            <img src={Testimonials1} />
-            <div>
-              <h3>Courtney Henry</h3>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book
-              </p>
-              <StarRating>
-                {stars.map((index) => {
-                  return <img src={Star} key={index} />;
-                })}
-              </StarRating>
-            </div>
-          </Card>
-        ))}
-      </TestimonialsWrapper>
+      {loading && <Loader />}
+      {!loading && error && (
+        <Error>
+          Something Went Wrong 😢 . Sorry We Couldn't load Testimonials
+        </Error>
+      )}
+      {!loading && !error && (
+        <>
+          <TestimonialsWrapper>
+            {testimonials?.data?.map(
+              ({ id, first_name: firstName, last_name: lastName, avatar }) => (
+                <Card key={id}>
+                  <ImageWrapper>
+                    <img
+                      src={"https://randomuser.me/api/portraits/men/86.jpg"}
+                    />
+                  </ImageWrapper>
+                  <div>
+                    <h3>
+                      {firstName} {lastName}
+                    </h3>
+                    <p>
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the industry's
+                      standard dummy text ever since the 1500s, when an unknown
+                      printer took a galley of type and scrambled it to make a
+                      type specimen book
+                    </p>
+                    <StarRating>
+                      {stars.map((index) => {
+                        return <img src={Star} key={index} />;
+                      })}
+                    </StarRating>
+                  </div>
+                </Card>
+              )
+            )}
+          </TestimonialsWrapper>
+          <Pagination>
+            <button
+              onClick={() => handlePagination(-1, testimonials?.total_pages)}
+            >
+              <img src={LeftArrow} alt="go to previous testimonials page" />
+            </button>
+            <div>{testimonials?.page}</div> /{" "}
+            <div>{testimonials?.total_pages}</div>
+            <button
+              onClick={() => handlePagination(+1, testimonials?.total_pages)}
+            >
+              <img src={RightArrow} alt="go to next testimonials page" />
+            </button>
+          </Pagination>
+        </>
+      )}
     </Section>
   );
 }
 
+const Error = styled.div`
+  color: red;
+  font-size: 1.5rem;
+`;
+const Pagination = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-block-start: 1rem;
+  font-weight: 600;
+  color: var(--grey-500);
+
+  img {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  button {
+    background: none;
+  }
+  button:hover {
+    cursor: pointer;
+  }
+`;
+
 const Section = styled.section`
   /* padding-inline: 22rem; */
-  gap: var(--spacing-120);
+  /* gap: var(--spacing-120); */
   padding-inline: clamp(0.5rem, 5vw + 1rem, 22rem);
   margin-block: var(--spacing-200) var(--spacing-120);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
 `;
 const TestimonialsWrapper = styled.div`
   display: grid;
@@ -85,10 +162,35 @@ const Card = styled.div`
     line-height: 1.6;
     margin-block-end: var(--spacing-25);
   }
+  @media (max-width: 62rem) {
+    h3 {
+      text-align: center;
+    }
+    div {
+      justify-content: center;
+    }
+  }
 
   @media (max-width: 62rem) {
     flex-direction: column;
     width: 100%;
+  }
+`;
+const ImageWrapper = styled.div`
+  width: 5rem;
+  height: 5rem;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  @media (max-width: 62rem) {
+    margin-inline: auto;
   }
 `;
 
