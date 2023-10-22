@@ -36,11 +36,13 @@ function ContactUs() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
     postData(URL, data);
+    reset();
     setIsSubmitted(true);
   };
 

@@ -61,8 +61,7 @@ const Section = styled.section`
   align-items: center;
   gap: var(--spacing-120);
   gap: var(--spacing-120);
-  /* padding-inline: clamp(0.5rem, 5vw + 1rem, 22rem); */
-  padding-inline: clamp(0.5rem, 18%, 22rem);
+  padding-inline: clamp(1rem, -3.2rem + 21vw, 22rem);
 `;
 
 const ContentWrapper = styled.div`

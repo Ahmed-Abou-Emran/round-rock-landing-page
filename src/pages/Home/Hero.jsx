@@ -46,7 +46,7 @@ const Header = styled.header`
   flex-direction: column;
   /* align-items: center; */
   position: relative;
-  gap: var(--spacing-360);
+  gap: var(--spacing-280);
   width: 100%;
   @media (max-width: 80rem) {
     background-image: url("./src/assets/Hero.jpg");

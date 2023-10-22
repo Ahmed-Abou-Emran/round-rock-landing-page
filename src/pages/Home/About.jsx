@@ -56,12 +56,12 @@ const Section = styled.section`
   height: 52.4rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: var(--spacing-160);
   margin-block: var(--spacing-120) var(--spacing-160);
   padding-block: var(--spacing-240);
-  /* padding-inline: clamp(0.5rem, 5vw + 1rem, 22rem); */
-  padding-inline: clamp(0.5rem, 10%, 22rem);
+
+  padding-inline: clamp(3rem, -34rem + 46.5vw, 22rem);
+  /* padding-inline: clamp(1rem, -3.2rem + 21vw, 22rem); */
   position: relative;
   z-index: 1;
 
@@ -82,24 +82,26 @@ const Section = styled.section`
     line-height: 1.3;
     max-width: 31rem;
   }
-  @media (max-width: 90rem) {
+  @media (max-width: 73rem) {
     height: revert;
     gap: var(--spacing-80);
+    align-items: center;
+    padding-inline: clamp(1rem, -0.5rem + 7vw, 5rem);
     h2 {
       margin-block-end: var(--spacing-30);
       font-size: 3.5rem;
     }
 
     img {
-      width: 100%;
+      max-width: 100%;
     }
   }
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
-  gap: var(--spacing-800);
-  @media (max-width: 93rem) {
+  justify-content: space-between;
+  @media (max-width: 73rem) {
     flex-direction: column;
     gap: var(--spacing-80);
   }
@@ -111,7 +113,7 @@ const Right = styled.div`
 
   h2 {
     margin-block-start: var(--spacing-400);
-    @media (max-width: 93rem) {
+    @media (max-width: 73rem) {
       margin-block: var(--spacing-100) var(--spacing-80);
     }
   }
@@ -121,7 +123,8 @@ const Right = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  height: 100%;
+  /* height: 100%; */
+  width: clamp(50rem, -5.333333333333336rem + 71.11111111111111vw, 80rem);
   position: absolute;
   top: 0;
   right: 0;
@@ -131,8 +134,9 @@ const ImageWrapper = styled.div`
     object-position: top left;
   }
 
-  @media (max-width: 93rem) {
+  @media (max-width: 73rem) {
     display: none;
+    width: auto;
   }
 `;
 const Button = styled.button`
@@ -143,6 +147,7 @@ const Button = styled.button`
   font-size: 1.5rem;
   font-weight: 700;
   padding: var(--spacing-60) var(--spacing-200);
+  align-self: center;
 
   transition: background-color 200ms ease-in;
   &:hover {
